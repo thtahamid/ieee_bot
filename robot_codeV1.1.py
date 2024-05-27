@@ -192,6 +192,9 @@ def main():
 
             if ir[1] == 0 and ir[2] == 0 and ir[3] == 0:
                 if not at_intersection and not after_turn:
+                    moveB(25,25)
+                    sleep(0.1)
+                    stop(1)
                     coordinate += 1
                     at_intersection = True
             else:
@@ -209,6 +212,7 @@ def main():
                 moveF(20,20)
                 sleep(0.4)
                 follow_line(ir)
+                
             elif coordinate == 6:
                 #  coordinate += 1
                  print("Turning left, current coordinate is: ", coordinate)
