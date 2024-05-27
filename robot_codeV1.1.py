@@ -175,7 +175,7 @@ def main():
         # arm.servo[1].angle = None
 
 
-
+        
         
 
         coordinate = 0
@@ -188,6 +188,8 @@ def main():
             print('\t'.join(map(str, ir)), f"Distance: {dist:.2f} cm\tCoordinate: {coordinate}", sep='\t')
             time.sleep(0.02)
             
+            
+
             if ir[1] == 0 and ir[2] == 0 and ir[3] == 0:
                 if not at_intersection and not after_turn:
                     coordinate += 1
@@ -196,7 +198,7 @@ def main():
                 at_intersection = False
                 # after_turn = False  # Reset after moving forward
             if coordinate == 4 :
-                coordinate += 1
+                # coordinate += 1
                 print("Turning left, Current Coordinate is: ", coordinate)
                 moveB(27,27)
                 sleep(0.15)
@@ -204,12 +206,57 @@ def main():
                 moveL(90,90)
                 sleep(0.9)
                 stop(1)
-                
                 moveF(20,20)
                 sleep(0.4)
                 follow_line(ir)
             elif coordinate == 6:
-                 stop(100)
+                #  coordinate += 1
+                 print("Turning left, current coordinate is: ", coordinate)
+                 moveB(27,27)
+                 sleep(0.2)
+                 stop(1)
+                 moveL(90,90)
+                 sleep(0.9)
+                 stop(1)
+                 moveF(20,20)
+                 sleep(0.7)
+                 follow_line(ir)
+            elif coordinate == 9:
+                #  coordinate += 1
+                 print("Turning right, current coordinate is: ", coordinate)
+                 moveB(27,27)
+                 sleep(0.15)
+                 stop(1)
+                 moveR(90,90)
+                 sleep(0.9)
+                 stop(1)
+                 moveF(20,20)
+                 sleep(0.7)
+                 follow_line(ir)
+            elif coordinate == 10:
+                #  coordinate += 1
+                 print("Turning right, current coordinate is: ", coordinate)
+                 moveB(27,27)
+                 sleep(0.15)
+                 stop(1)
+                 moveR(90,90)
+                 sleep(0.9)
+                 stop(1)
+                 moveF(20,20)
+                 sleep(0.7)
+                 follow_line(ir)
+            elif coordinate == 13:
+                stop(100)
+                break
+                #  coordinate += 1
+                #  print("Turning left, current coordinate is: ", coordinate)
+                #  moveB(27,27)
+                #  sleep(0.15)
+                #  stop(1)
+                #  moveL(90,90)
+                #  sleep(0.9)
+                #  stop(1)
+                #  follow_line(ir)
 
             else:
                 follow_line(ir)
