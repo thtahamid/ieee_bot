@@ -1,0 +1,23 @@
+1. time sudo apt install arduino
+    - sudo usermod -a -G dialout username (replace username with pi username)
+
+
+
+2. sudo apt install python3-venv python3-pip (install vertural env)
+    - python3 -m venv myenv
+    - source myenv/bin/activate
+
+
+- pip install adafruit-circuitpython-servokit
+
+
+ - pip install RPi.GPIO
+
+ - pip install pynput (for keyboard input) 
+
+
+- sudo rm /usr/lib/python3.11/EXTERNALLY-MANAGED  (for rpi os bookworm)
+
+ - sudo pip3 install opencv-python (to install python)
+
+ - sudo pip3 install mediapipe
