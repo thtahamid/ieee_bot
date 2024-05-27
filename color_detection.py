@@ -9,7 +9,7 @@ def detect_color():
     blue_upper = np.array([126, 255, 255])
 
     # Initialize the camera
-    cap = cv2.VideoCapture(1)
+    cap = cv2.VideoCapture(0)
 
     try:
         while True:
@@ -39,8 +39,8 @@ def detect_color():
             else:
                 color = "None"
             
-            # print(f"Detected color: {color}")
-            return color
+            print(f"Detected color: {color}")
+            # return color
 
             # Add a small delay to avoid flooding the terminal
             cv2.waitKey(1000)
@@ -55,6 +55,7 @@ def detect_color():
 
 # Example usage of the function
 if __name__ == "__main__":
-    while True:
-        color = detect_color()
-        print(color)
+    detect_color()
+    # while True:
+    #     color = detect_color()
+    #     print(color)

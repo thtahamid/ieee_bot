@@ -65,42 +65,13 @@ class motor():
         self.pwmb.ChangeDutyCycle(0)
         sleep(t)
  
-rmotor = motor(22, 27, 17 , 10, 11, 9)
+rmotor = motor(21,16,20, 1,7,8)
 
-# rmotor.stop(1)
+
 rmotor.moveF(100, 2)
 rmotor.stop(1)
-# rmotor.moveB(100, 2)
-
-# rmotor.moveL(70,1)
-# rmotor.stop(1)
-# rmotor.moveR(100,3)
-# rmotor.stop(1)
-# rmotor.moveR(50,1)
 
 
-# rmotor.moveR(80, 1.75)
-# rmotor.stop(1)
-# rmotor.moveL(80, 1.75)
-# rmotor.stop(1)
-
-# rmotor.moveF (50,2)
-
-# rmotor.stop(1)
-
-# rmotor.moveB(50,2)
-# rmotor1.stop(1)
-
-    
-'''
-for x in range(20,100):
-    motor1.moveF(x,0.05)
-    print(x)
-for x in range(100,20,-1):
-    motor1.moveF(x,0.05)
-    print(x)
-motor1.stop(5)
-'''
 
 
 

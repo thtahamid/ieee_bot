@@ -134,6 +134,8 @@ def follow_line(ir):
         moveF(30,10)
     elif ir[2] and ir[3] ==0:   # slightly toward left so, turn slightly right
         moveF(10,30)
+    elif ir[0] and ir[1] and ir[2] and ir[4] ==1 and ir [3] == 0:
+         moveF(10,50)
     # elif ir[1] and ir[2] and ir[3] ==0:
     #     moveF(25,25)
     else:
@@ -165,36 +167,167 @@ def follow_line(ir):
 def main():
     try:
         pin_setup()
-        arm.servo[1].angle = int(90)
-        sleep(1)
-        arm.servo[0].angle = int(180)
-        sleep(1.5)
-        arm.servo[0].angle = None
-        arm.servo[1].angle = None
+        # arm.servo[1].angle = int(90)
+        # sleep(1)
+        # arm.servo[0].angle = int(180)
+        # sleep(1.5)
+        # arm.servo[0].angle = None
+        # arm.servo[1].angle = None
+
+
+
+        
+
+        coordinate = 0
+        at_intersection = False
+        after_turn = False
+
         while True:
-            coordinate = 0
             dist = measure_distance()
             ir = read_sensor_values()
-            print('\t'.join(map(str, ir)), f"Distance: {dist:.2f} cm", sep='\t')
+            print('\t'.join(map(str, ir)), f"Distance: {dist:.2f} cm\tCoordinate: {coordinate}", sep='\t')
             time.sleep(0.02)
-            print(coordinate)
-            # print(f"Distance: {dist:.2f} cm")
             
-            follow_line(ir)
+            if ir[1] == 0 and ir[2] == 0 and ir[3] == 0:
+                if not at_intersection and not after_turn:
+                    coordinate += 1
+                    at_intersection = True
+            else:
+                at_intersection = False
+                # after_turn = False  # Reset after moving forward
+            if coordinate == 4 :
+                coordinate += 1
+                print("Turning left, Current Coordinate is: ", coordinate)
+                moveB(27,27)
+                sleep(0.15)
+                stop(1)
+                moveL(90,90)
+                sleep(0.9)
+                stop(1)
+                
+                moveF(20,20)
+                sleep(0.4)
+                follow_line(ir)
+            elif coordinate == 6:
+                 stop(100)
+
+            else:
+                follow_line(ir)
+            # # Check for specific coordinates to make turns
+            # if coordinate in {4, 5, 8, 9, 12, 13}:
+                
+            #     stop(0.5)
+
+            #     if coordinate in {4, 5, 12, 13}:
+            #         print("Turning left")
+            #         moveL(80, 80)
+            #         while read_sensor_values()[2] != 0:
+            #             time.sleep(0.02)  # Small delay to prevent overloading the loop
+            #         stop(0.5)
+            #     elif coordinate in {8, 9}:
+            #         print("Turning right")
+            #         moveR(80, 80)
+            #         while read_sensor_values()[2] != 0:
+            #             time.sleep(0.02)  # Small delay to prevent overloading the loop
+            #         stop(0.5)
+
+            #     moveF(20, 20)  # Move forward a bit after turning
+            #     time.sleep(1.0)  # Ensure it clears the intersection
+            #     stop(0.5)
+            #     after_turn = True  # Set the flag to prevent immediate re-detection
+            #     at_intersection = False  # Ensure it's reset to detect the next intersection
+
+            # elif coordinate == 16:
+            #     moveB(20, 20)
+            #     time.sleep(0.15)
+            #     stop(20)
+            #     break
+
+            
+
+
+
+                
+
+        # while True:
+            
+        #     dist = measure_distance()
+        #     ir = read_sensor_values()
+        #     print('\t'.join(map(str, ir)), f"Distance: {dist:.2f} cm", sep='\t')
+        #     time.sleep(0.02)
+        #     print(coordinate)
+            
+        #     if ir[1] ==0 and ir[2] == 0 and ir[3] ==0:
+        #         if not at_intersection:
+        #              coordinate +=1
+        #              at_intersection = True
+        #     else:
+        #         at_intersection= False
+                   
+        #     if coordinate == 4 or coordinate == 5:
+        #         moveB(20, 20)
+        #         time.sleep(0.15)
+        #         stop(0.5)
+        #         moveL(80, 80)
+        #         time.sleep(1.3)
+        #         stop(1)
+        #         moveF(30,30)
+        #         time.sleep(1)
+        #         follow_line(ir)  # Ensure the robot continues following the line after the turn
+        #     elif coordinate == 8 or coordinate == 9:
+        #         moveB(20, 20)
+        #         time.sleep(0.15)
+        #         stop(0.5)
+        #         moveR(80, 80)
+        #         time.sleep(1.3)
+        #         stop(1)
+        #         follow_line(ir)
+        #     elif coordinate == 12 or coordinate == 13:
+        #         moveB(20, 20)
+        #         time.sleep(0.15)
+        #         stop(0.5)
+        #         moveL(80, 80)
+        #         time.sleep(1.3)
+        #         stop(1)
+        #         follow_line(ir)
+        #     elif coordinate == 16:
+        #         moveB(20, 20)
+        #         time.sleep(0.15)
+        #         stop(20)
+        #         break
+        #     else:
+        #         follow_line(ir)
+            
+   
+    except KeyboardInterrupt:
+        print("\nExiting...")
+    finally:
+        GPIO.cleanup()
+
+if __name__ == "__main__":
+    main()
+
+
+
+
+
+# print(f"Distance: {dist:.2f} cm")
+            
+            # follow_line(ir)
 
            
 
             
             
-            if dist < 20 :
-                stop(1)
-                arm.servo[0].angle = int(105)
-                sleep(1)
-                arm.servo[1].angle = int(50)
-                sleep(1.5)
-                stop(50)
-            elif dist < 30 : 
-                 moveF(20,20)
+            # if dist < 20 :
+            #     stop(1)
+            #     arm.servo[0].angle = int(105)
+            #     sleep(1)
+            #     arm.servo[1].angle = int(50)
+            #     sleep(1.5)
+            #     stop(50)
+            # elif dist < 30 : 
+            #      moveF(20,20)
                 
                 # arm.servo[1].angle = int(72)
                 # sleep(1)
@@ -209,35 +342,6 @@ def main():
                 #  moveR(70,70)
                 #  sleep(2)
                 #  stop(20)
-            elif ir[1] and ir[3] ==0:
-                 while ir[1] == 0:
-                      moveR(80,80)
-                 
-            else:
-                # moveF(25,25)
-                follow_line(ir) 
-            
-        
-
-            
-            
-        
-
-            
-            
-            
- 
-            
-   
-    except KeyboardInterrupt:
-        print("\nExiting...")
-    finally:
-        GPIO.cleanup()
-
-if __name__ == "__main__":
-    main()
-
-
 
 
 

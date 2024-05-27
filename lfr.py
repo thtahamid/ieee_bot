@@ -101,14 +101,18 @@ def main():
         rm = motor(21,16,20, 1,7,8)
         print("Reading IR sensor values...")
         
-        
+        rm.moveF(50,50)
+        sleep(1)
+        rm.moveB(30,30)
+        sleep(0.2)
+
         while True:
             ir = read_sensor_values()
             print_sensor_values(ir)
             time.sleep(0.05)  # Adjust delay as needed
             
             
-            
+            # rm.moveB(50,50)
             # # sleep(0.7)
             # rm.moveL(100,100)
             # sleep(3)
@@ -119,16 +123,16 @@ def main():
             # rm.moveL(100,100)
             # sleep(3)
             
-            if ir[2] == 0 and ir[1] and ir[3] ==1:  # on the line so, move forward
-                rm.moveF(25,25) 
-            elif ir[1] == 0:    # towards right so, turn little left
-                rm.moveF(70,10) 
-            elif ir[3] == 0:    # towards left so, turn little right
-                rm.moveF(10,70)
-            elif ir[1] and ir[2] == 0:  # slightly toward right so, turn slightly left
-                rm.moveF(50,10)
-            elif ir[2] and ir[3] ==0:   # slightly toward left so, turn slightly right
-                rm.moveF(10,50)
+            # if ir[2] == 0 and ir[1] and ir[3] ==1:  # on the line so, move forward
+            #     rm.moveF(25,25) 
+            # elif ir[1] == 0:    # towards right so, turn little left
+            #     rm.moveF(70,10) 
+            # elif ir[3] == 0:    # towards left so, turn little right
+            #     rm.moveF(10,70)
+            # elif ir[1] and ir[2] == 0:  # slightly toward right so, turn slightly left
+            #     rm.moveF(50,10)
+            # elif ir[2] and ir[3] ==0:   # slightly toward left so, turn slightly right
+            #     rm.moveF(10,50)
             # elif ir[1] and ir[2] and ir[3] ==0:
             #     rm.stop()
                 
