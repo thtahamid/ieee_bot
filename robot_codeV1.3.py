@@ -147,8 +147,8 @@ def stop(t=10):
     sleep(t)
 
 def hard_stop():
-    moveB(20, 20)
-    sleep(0.15)
+    moveB(15, 15)
+    sleep(0.1)
     stop(1)
 
 def read_sensor_values():
@@ -182,13 +182,15 @@ def follow_line(ir):
     if ir[2] == 0:
         moveF(25, 25)
     elif ir[1] == 0:
-        moveF(70, 0)
+        moveL(70,30)
+        # moveF(40, 10)
     elif ir[3] == 0:
-        moveF(0, 70)
+        moveR(30,70)
+        # moveF(10, 40)
     elif ir[1] and ir[2] == 0:
-        moveF(30, 10)
+        moveF(30, 5)
     elif ir[2] and ir[3] == 0:
-        moveF(10, 30)
+        moveF(5, 30)
     elif ir[0] == 0:
         moveL(80,80)
     elif ir[4] == 0:
@@ -250,125 +252,177 @@ def detect_color():
         cap.release()
         cv2.destroyAllWindows()
 
+def traverse_map():
+    coordinate = 0
+    at_intersection = False
+    completed_coordinates = set()
+    free_coordinates = set()
+    obj_coordinate = []
+    while True:
+        dist = measure_distance()
+        ir = read_sensor_values()
+        
+        # obj_color = detect_color()
+        print('\t'.join(map(str, ir)), f"Distance: {dist:.2f} cm\tCoordinate: {coordinate}", sep='\t')
+        time.sleep(0.02)
 
+        # Mark each coordinate in the variable coordinate
+        if (ir[1] ==0  and ir[2] == 0 and ir[3] == 0) or (ir[0] == 0 and ir[1] == 0 and ir[2] == 0) or (ir[2] == 0 and ir[3] == 0 and ir[4] == 0):
+            if not at_intersection:
+                
+                coordinate += 1
+                at_intersection = True
+                free_coordinates.add(coordinate)
+                print("Coordinate: ", coordinate)
+                
+                print("Free coordinates: ", free_coordinates)
+                stop(1)
+                
+        else:
+            at_intersection = False
+
+        if coordinate == 5 and coordinate not in completed_coordinates:
+            hard_stop()
+            print("Robot reached coordinate: ", coordinate)
+            turnL(100, 100)
+            print("Turned left")
+            stop(1)
+            print("Completed Coordinates: ", completed_coordinates)
+            follow_line(ir)
+            
+            completed_coordinates.add(coordinate)
+
+        elif coordinate == 6 and coordinate not in completed_coordinates:
+            hard_stop()
+            print("Robot reached coordinate: ", coordinate)
+            turnL(100, 100)
+            print("Turned left")
+            stop(1)
+            print("Completed Coordinates: ", completed_coordinates)
+            follow_line(ir)
+            completed_coordinates.add(coordinate)
+
+        elif coordinate == 11 and coordinate not in completed_coordinates:
+            hard_stop()
+            print("Robot reached coordinate: ", coordinate)
+            turnR(100, 100)
+            print("Turned Right")
+            stop(1)
+            print("Completed Coordinates: ", completed_coordinates)
+            follow_line(ir)
+            completed_coordinates.add(coordinate)
+
+        elif coordinate == 12 and coordinate not in completed_coordinates:
+            hard_stop()
+            print("Robot reached coordinate: ", coordinate)
+            turnR(100, 100)
+            print("Turned Right")
+            stop(1)
+            print("Completed Coordinates: ", completed_coordinates)
+            follow_line(ir)
+            completed_coordinates.add(coordinate)
+            # print("Completed coordinates: ", completed_coordinates)
+            
+        elif coordinate == 17 and coordinate not in completed_coordinates:
+            hard_stop()
+            print("Robot reached coordinate: ", coordinate)
+            turnL(100, 100)
+            print("Turned left")
+            stop(1)
+            print("Completed coordinates: ", completed_coordinates)
+            follow_line(ir)
+            completed_coordinates.add(coordinate)
+
+        elif coordinate == 18 and coordinate not in completed_coordinates:
+            hard_stop()
+            print("Robot reached coordinate: ", coordinate)
+            turnL(100, 100)
+            print("Turned left")
+            stop(1)
+            print("Completed coordinates: ", completed_coordinates)
+            follow_line(ir)
+            completed_coordinates.add(coordinate)
+
+        elif coordinate == 23 and coordinate not in completed_coordinates:
+            hard_stop()
+            print("Robot reached coordinate: ", coordinate)
+            turnR(100, 100)
+            print("Turned Right")
+            stop(1)
+            print("Completed Coordinates: ", completed_coordinates)
+            follow_line(ir)
+            completed_coordinates.add(coordinate)
+
+        elif coordinate == 24 and coordinate not in completed_coordinates:
+            hard_stop()
+            print("Robot reached coordinate: ", coordinate)
+            turnR(100, 100)
+            print("Turned Right")
+            stop(1)
+            print("Completed Coordinates: ", completed_coordinates)
+            follow_line(ir)
+            completed_coordinates.add(coordinate)
+
+        elif coordinate == 29 and coordinate not in completed_coordinates:
+            hard_stop()
+            print("Robot reached coordinate: ", coordinate)
+            turnL(100, 100)
+            print("Turned left")
+            stop(1)
+            print("Completed coordinates: ", completed_coordinates)
+            follow_line(ir)
+            completed_coordinates.add(coordinate)
+        
+        elif coordinate == 30 and coordinate not in completed_coordinates:
+            hard_stop()
+            print("Robot reached coordinate: ", coordinate)
+            turnL(100, 100)
+            print("Turned left")
+            stop(1)
+            print("Completed coordinates: ", completed_coordinates)
+            follow_line(ir)
+            completed_coordinates.add(coordinate)
+        
+        elif coordinate == 35 and coordinate not in completed_coordinates:
+            hard_stop()
+            print("Robot reached coordinate: ", coordinate)
+            print("Robot finished traversal`")
+            stop(1)
+            print("Completed coordinates: ", completed_coordinates)
+            print("Object color is: ", detect_color())
+            break
+        
+        elif coordinate == 8 and coordinate not in obj_coordinate:
+            
+            if dist <= 11 :
+                stop(1)
+                print("Object color is: ", detect_color())
+                arm.servo[1].angle = int(90)
+                sleep(1)
+                arm.servo[0].angle = int(110)
+                sleep(5)
+                arm.servo[0].angle = None
+                arm.servo[1].angle = None
+                break
+            
+        follow_line(ir)
 
 def main():
     try:
+        traversal_start = time.time()
         pin_setup()
-        arm.servo[1].angle = int(90)
+        arm.servo[1].angle = int(75)
         sleep(1)
         arm.servo[0].angle = int(180)
         sleep(1.5)
         arm.servo[0].angle = None
         arm.servo[1].angle = None
+        traverse_map()
+        traversal_end = time.time()
+        print("Time to finish: ", int(traversal_end - traversal_start))
+
         
-        coordinate = 0
-        at_intersection = False
-        completed_coordinates = set()
-        free_coordinates = set()
-        obj_coordinate = []
-        while True:
-            dist = measure_distance()
-            ir = read_sensor_values()
-            # obj_color = detect_color()
-            print('\t'.join(map(str, ir)), f"Distance: {dist:.2f} cm\tCoordinate: {coordinate}", sep='\t')
-            time.sleep(0.02)
-
-            # Mark each coordinate in the variable coordinate
-            if ir[1] == 0 and ir[2] == 0 and ir[3] ==0 :
-                if not at_intersection:
-                    coordinate += 1
-                    at_intersection = True
-                    free_coordinates.add(coordinate)
-                    print("Coordinate: ", coordinate)
-                    
-                    print("Free coordinates: ", free_coordinates)
-                    
-            else:
-                at_intersection = False
-
-            if coordinate == 4 and coordinate not in completed_coordinates:
-                hard_stop()
-                print("Robot reached coordinate: ", coordinate)
-                turnL(100, 100)
-                print("Turned left")
-                stop(1)
-                print("Completed Coordinates: ", completed_coordinates)
-                follow_line(ir)
-                
-                completed_coordinates.add(coordinate)
-
-            elif coordinate == 5 and coordinate not in completed_coordinates:
-                hard_stop()
-                print("Robot reached coordinate: ", coordinate)
-                turnL(100, 100)
-                print("Turned left")
-                stop(1)
-                print("Completed Coordinates: ", completed_coordinates)
-                follow_line(ir)
-                completed_coordinates.add(coordinate)
-
-            elif coordinate == 8 and coordinate not in completed_coordinates:
-                hard_stop()
-                print("Robot reached coordinate: ", coordinate)
-                turnR(100, 100)
-                print("Turned Right")
-                stop(1)
-                print("Completed Coordinates: ", completed_coordinates)
-                follow_line(ir)
-                completed_coordinates.add(coordinate)
-
-            elif coordinate == 9 and coordinate not in completed_coordinates:
-                hard_stop()
-                print("Robot reached coordinate: ", coordinate)
-                turnR(100, 100)
-                print("Turned Right")
-                stop(1)
-                print("Completed Coordinates: ", completed_coordinates)
-                follow_line(ir)
-                completed_coordinates.add(coordinate)
-                # print("Completed coordinates: ", completed_coordinates)
-                
-            elif coordinate == 12 and coordinate not in completed_coordinates:
-                hard_stop()
-                print("Robot reached coordinate: ", coordinate)
-                turnL(100, 100)
-                print("Turned left")
-                stop(1)
-                print("Completed coordinates: ", completed_coordinates)
-                follow_line(ir)
-                completed_coordinates.add(coordinate)
-            elif coordinate == 13 and coordinate not in completed_coordinates:
-                hard_stop()
-                print("Robot reached coordinate: ", coordinate)
-                turnL(100, 100)
-                print("Turned left")
-                stop(1)
-                print("Completed coordinates: ", completed_coordinates)
-                follow_line(ir)
-                completed_coordinates.add(coordinate)
-            elif coordinate == 16 and coordinate not in completed_coordinates:
-                hard_stop()
-                print("Robot reached coordinate: ", coordinate)
-                print("Robot finished traversal`")
-                stop(1)
-                print("Completed coordinates: ", completed_coordinates)
-                print("Object color is: ", detect_color())
-                break
-            elif coordinate == 7 and coordinate not in obj_coordinate:
-                if dist <= 15 :
-                    stop(1)
-                    print("Object color is: ", detect_color())
-                    arm.servo[1].angle = int(90)
-                    sleep(1)
-                    arm.servo[0].angle = int(120)
-                    sleep(5)
-                    arm.servo[0].angle = None
-                    arm.servo[1].angle = None
-                    break
-                else: 
-                    follow_line(ir)
-            follow_line(ir)
+        
 
     except KeyboardInterrupt:
         print("\nExiting...")
