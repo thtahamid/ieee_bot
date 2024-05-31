@@ -258,76 +258,6 @@ def detect_color():
         cap.release()
         cv2.destroyAllWindows()
 
-def red1():
-    n_coordinate = 0
-    at_intersection = False
-    g_coordinates = set()
-    turnR(100,100)
-    stop(0.5)
-    while True:
-        ir = read_sensor_values()
-
-        if (ir[1] ==0  and ir[2] == 0 and ir[3] == 0) or (ir[0] == 0 and ir[1] == 0 and ir[2] == 0) or (ir[2] == 0 and ir[3] == 0 and ir[4] == 0):
-                if not at_intersection:
-                    
-                    n_coordinate += 1
-                    at_intersection = True
-                    
-                    print("n_coordinate: ", n_coordinate)
-                    print("g_coordinate: ", g_coordinates)
-                    
-                    
-                    # stop(0.5)
-        
-
-        else:
-            at_intersection = False
-        if n_coordinate  ==  1 and n_coordinate not in g_coordinates:
-            hard_stop()
-            turnL(90,90)
-            stop(0.5)
-            g_coordinates.add(n_coordinate)
-            follow_line(ir)
-
-        elif n_coordinate  ==  5 and n_coordinate not in g_coordinates:
-            hard_stop()
-            turnL(90,90)
-            stop(0.5)
-            g_coordinates.add(n_coordinate)
-            follow_line(ir)
-
-        elif n_coordinate == 7 and n_coordinate not in g_coordinates:
-            hard_stop()
-            moveR(90,90)
-            sleep(0.8)
-            stop(0.5)
-            drop_object()
-            
-            stop(0.3)
-            turnR(90,90)
-            g_coordinates.add(n_coordinate)
-            follow_line(ir)
-
-        elif n_coordinate == 9 and n_coordinate not in g_coordinates:
-            hard_stop()
-            turnR(100,100)
-            stop(0.5)
-            g_coordinates.add(n_coordinate)
-            follow_line(ir)
-
-        elif n_coordinate == 13 and n_coordinate not in g_coordinates:
-            hard_stop()
-            turnR(100,100)
-            stop(0.5)
-            g_coordinates.add(n_coordinate)
-            follow_line(ir)
-            break
-
-
-        follow_line(ir)
-
-def red2():
-    print()
 
 def blue1():
     n_coordinate = 0
@@ -1342,6 +1272,1152 @@ def blue16():
 
         follow_line(ir)
 
+
+def red1():
+    n_coordinate = 0
+    at_intersection = False
+    g_coordinates = set()
+    turnR(90,90)
+    stop(0.3)
+    while True:
+        ir = read_sensor_values()
+
+        if (ir[1] ==0  and ir[2] == 0 and ir[3] == 0) or (ir[0] == 0 and ir[1] == 0 and ir[2] == 0) or (ir[2] == 0 and ir[3] == 0 and ir[4] == 0):
+                if not at_intersection:
+                    
+                    n_coordinate += 1
+                    at_intersection = True
+                    
+                    print("n_coordinate: ", n_coordinate)
+                    print("g_coordinate: ", g_coordinates)
+                    
+                    
+                    # stop(0.5)
+        
+
+        else:
+            at_intersection = False
+        if n_coordinate  ==  1 and n_coordinate not in g_coordinates:
+            hard_stop()
+            turnL(90,90)
+            stop(0.5)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+
+        elif n_coordinate  ==  5 and n_coordinate not in g_coordinates:
+            hard_stop()
+            turnL(90,90)
+            stop(0.5)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+
+        elif n_coordinate == 7 and n_coordinate not in g_coordinates:
+            hard_stop()
+            moveR(90,90)
+            sleep(0.8)
+            stop(0.5)
+            drop_object()
+            
+            stop(0.3)
+            turnR(90,90)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+
+        elif n_coordinate == 9 and n_coordinate not in g_coordinates:
+            hard_stop()
+            turnR(90,90)
+            stop(0.5)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+
+        elif n_coordinate == 13 and n_coordinate not in g_coordinates:
+            hard_stop()
+            turnR(90,90)
+            stop(0.5)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+            break
+
+
+        follow_line(ir)
+
+def red2():
+    n_coordinate = 0
+    at_intersection = False
+    g_coordinates = set()
+    turnR(90,90)
+    stop(0.3)
+    while True:
+        ir = read_sensor_values()
+
+        if (ir[1] ==0  and ir[2] == 0 and ir[3] == 0) or (ir[0] == 0 and ir[1] == 0 and ir[2] == 0) or (ir[2] == 0 and ir[3] == 0 and ir[4] == 0):
+                if not at_intersection:
+                    
+                    n_coordinate += 1
+                    at_intersection = True
+                    
+                    print("n_coordinate: ", n_coordinate)
+                    print("g_coordinate: ", g_coordinates)
+                    
+                    
+                    # stop(0.5)
+        
+
+        else:
+            at_intersection = False
+        if n_coordinate  ==  2 and n_coordinate not in g_coordinates:
+            stop(0.3)
+            turnL(90,90)
+            stop(0.4)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+
+        elif n_coordinate  ==  6 and n_coordinate not in g_coordinates:
+            hard_stop()
+            turnL(90,90)
+            stop(0.4)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+
+        elif n_coordinate == 8 and n_coordinate not in g_coordinates:
+            hard_stop()
+            moveR(90,90)
+            sleep(0.5)
+            stop(0.4)
+            drop_object()
+            
+            stop(0.3)
+            turnR(90,90)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+
+        elif n_coordinate == 10 and n_coordinate not in g_coordinates:
+            hard_stop()
+            turnR(90,90)
+            stop(0.5)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+
+        elif n_coordinate == 14 and n_coordinate not in g_coordinates:
+            hard_stop()
+            turnR(90,90)
+            stop(0.4)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+        elif n_coordinate == 15 and n_coordinate not in g_coordinates:
+            stop(0.3)
+            
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+            
+
+
+        follow_line(ir)
+
+def red3():
+    n_coordinate = 0
+    at_intersection = False
+    g_coordinates = set()
+    turnR(90,90)
+    stop(0.3)
+    while True:
+        ir = read_sensor_values()
+
+        if (ir[1] ==0  and ir[2] == 0 and ir[3] == 0) or (ir[0] == 0 and ir[1] == 0 and ir[2] == 0) or (ir[2] == 0 and ir[3] == 0 and ir[4] == 0):
+                if not at_intersection:
+                    
+                    n_coordinate += 1
+                    at_intersection = True
+                    
+                    print("n_coordinate: ", n_coordinate)
+                    print("g_coordinate: ", g_coordinates)
+                    
+                    
+                    # stop(0.5)
+        
+
+        else:
+            at_intersection = False
+        if n_coordinate  ==  3 and n_coordinate not in g_coordinates:
+            stop(0.3)
+            turnL(90,90)
+            stop(0.4)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+
+        elif n_coordinate  ==  7 and n_coordinate not in g_coordinates:
+            hard_stop()
+            turnL(90,90)
+            stop(0.4)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+
+        elif n_coordinate == 9 and n_coordinate not in g_coordinates:
+            hard_stop()
+            moveR(90,90)
+            sleep(0.5)
+            stop(0.4)
+            drop_object()
+            
+            stop(0.3)
+            turnR(90,90)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+
+        elif n_coordinate == 11 and n_coordinate not in g_coordinates:
+            hard_stop()
+            turnR(90,90)
+            stop(0.5)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+
+        elif n_coordinate == 15 and n_coordinate not in g_coordinates:
+            hard_stop()
+            turnR(90,90)
+            stop(0.4)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+        elif n_coordinate == 16 and n_coordinate not in g_coordinates:
+            stop(0.3)
+            
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+            
+
+
+        follow_line(ir)
+
+def red4():
+    n_coordinate = 0
+    at_intersection = False
+    g_coordinates = set()
+    while True:
+        ir = read_sensor_values()
+
+        if (ir[1] ==0  and ir[2] == 0 and ir[3] == 0) or (ir[0] == 0 and ir[1] == 0 and ir[2] == 0) or (ir[2] == 0 and ir[3] == 0 and ir[4] == 0):
+                if not at_intersection:
+                    
+                    n_coordinate += 1
+                    at_intersection = True
+                    
+                    print("n_coordinate: ", n_coordinate)
+                    print("g_coordinate: ", g_coordinates)
+                    
+                    
+                    # stop(0.5)
+        
+
+        else:
+            at_intersection = False
+        if n_coordinate  ==  2 and n_coordinate not in g_coordinates:
+            stop(0.3)
+            turnR(90,90)
+            stop(0.3)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+
+        elif n_coordinate  ==  6 and n_coordinate not in g_coordinates:
+            hard_stop()
+            turnR(90,90)
+            stop(0.4)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+
+        elif n_coordinate == 9 and n_coordinate not in g_coordinates:
+            hard_stop()
+            moveL(80,80)
+            sleep(0.6)
+            stop(0.4)
+            drop_object()
+            moveB(25,25)
+            sleep(0.3)
+            stop(0.3)
+            turnL(90,90)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+
+        elif n_coordinate == 12 and n_coordinate not in g_coordinates:
+            hard_stop()
+            turnL(90,90)
+            stop(0.5)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+
+        elif n_coordinate == 16 and n_coordinate not in g_coordinates:
+            hard_stop()
+            turnL(90,90)
+            stop(0.4)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+        elif n_coordinate == 17 and n_coordinate not in g_coordinates:
+            hard_stop()
+            turnL(90,90)
+            stop(0.4)
+            g_coordinates.add(n_coordinate)
+            break
+            
+
+
+        follow_line(ir)
+
+def red5():
+    n_coordinate = 0
+    at_intersection = False
+    g_coordinates = set()
+    while True:
+        ir = read_sensor_values()
+
+        if (ir[1] ==0  and ir[2] == 0 and ir[3] == 0) or (ir[0] == 0 and ir[1] == 0 and ir[2] == 0) or (ir[2] == 0 and ir[3] == 0 and ir[4] == 0):
+                if not at_intersection:
+                    
+                    n_coordinate += 1
+                    at_intersection = True
+                    
+                    print("n_coordinate: ", n_coordinate)
+                    print("g_coordinate: ", g_coordinates)
+                    
+                    
+                    # stop(0.5)
+        
+
+        else:
+            at_intersection = False
+        if n_coordinate  ==  1 and n_coordinate not in g_coordinates:
+            stop(0.3)
+            turnL(90,90)
+            stop(0.3)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+
+        elif n_coordinate  ==  2 and n_coordinate not in g_coordinates:
+            hard_stop()
+            turnR(90,90)
+            stop(0.4)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+        elif n_coordinate  ==  5 and n_coordinate not in g_coordinates:
+            hard_stop()
+            turnR(90,90)
+            stop(0.4)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+
+        elif n_coordinate == 8 and n_coordinate not in g_coordinates:
+            hard_stop()
+            moveL(80,80)
+            sleep(0.6)
+            stop(0.4)
+            drop_object()
+            moveB(25,25)
+            sleep(0.3)
+            stop(0.3)
+            turnL(90,90)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+
+        elif n_coordinate == 11 and n_coordinate not in g_coordinates:
+            hard_stop()
+            turnL(90,90)
+            stop(0.5)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+
+        elif n_coordinate == 14 and n_coordinate not in g_coordinates:
+            hard_stop()
+            turnL(90,90)
+            stop(0.4)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+        elif n_coordinate == 15 and n_coordinate not in g_coordinates:
+            stop(0.5)
+            g_coordinates.add(n_coordinate)
+            break
+            
+
+
+        follow_line(ir)
+
+def red6():
+    n_coordinate = 0
+    at_intersection = False
+    g_coordinates = set()
+    turnL(90,90)
+    stop(0.3)
+    while True:
+        ir = read_sensor_values()
+
+        if (ir[1] ==0  and ir[2] == 0 and ir[3] == 0) or (ir[0] == 0 and ir[1] == 0 and ir[2] == 0) or (ir[2] == 0 and ir[3] == 0 and ir[4] == 0):
+                if not at_intersection:
+                    
+                    n_coordinate += 1
+                    at_intersection = True
+                    
+                    print("n_coordinate: ", n_coordinate)
+                    print("g_coordinate: ", g_coordinates)
+                    
+                    
+                    # stop(0.5)
+        
+
+        else:
+            at_intersection = False
+        if n_coordinate  ==  2 and n_coordinate not in g_coordinates:
+            stop(0.3)
+            turnR(90,90)
+            stop(0.3)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+
+        elif n_coordinate  ==  5 and n_coordinate not in g_coordinates:
+            hard_stop()
+            turnR(90,90)
+            stop(0.4)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+
+
+        elif n_coordinate == 8 and n_coordinate not in g_coordinates:
+            hard_stop()
+            moveL(80,80)
+            sleep(0.6)
+            stop(0.4)
+            drop_object()
+            moveB(25,25)
+            sleep(0.3)
+            stop(0.3)
+            turnL(90,90)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+
+        elif n_coordinate == 11 and n_coordinate not in g_coordinates:
+            hard_stop()
+            turnL(90,90)
+            stop(0.5)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+
+        elif n_coordinate == 14 and n_coordinate not in g_coordinates:
+            hard_stop()
+            turnL(90,90)
+            stop(0.4)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+        elif n_coordinate == 16 and n_coordinate not in g_coordinates:
+            stop(0.5)
+            g_coordinates.add(n_coordinate)
+            break
+            
+
+
+        follow_line(ir)
+
+def red7():
+    n_coordinate = 0
+    at_intersection = False
+    g_coordinates = set()
+    
+    while True:
+        ir = read_sensor_values()
+
+        if (ir[1] ==0  and ir[2] == 0 and ir[3] == 0) or (ir[0] == 0 and ir[1] == 0 and ir[2] == 0) or (ir[2] == 0 and ir[3] == 0 and ir[4] == 0):
+                if not at_intersection:
+                    
+                    n_coordinate += 1
+                    at_intersection = True
+                    
+                    print("n_coordinate: ", n_coordinate)
+                    print("g_coordinate: ", g_coordinates)
+                    
+                    
+                    # stop(0.5)
+        
+
+        else:
+            at_intersection = False
+        if n_coordinate  ==  1 and n_coordinate not in g_coordinates:
+            stop(0.3)
+            turnR(90,90)
+            stop(0.3)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+
+        elif n_coordinate  ==  2 and n_coordinate not in g_coordinates:
+            hard_stop()
+            turnL(90,90)
+            stop(0.4)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+
+        elif n_coordinate  ==  4 and n_coordinate not in g_coordinates:
+            hard_stop()
+            turnL(90,90)
+            stop(0.4)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir) 
+
+        elif n_coordinate  ==  8 and n_coordinate not in g_coordinates:
+            hard_stop()
+            turnL(90,90)
+            stop(0.4)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir) 
+
+        elif n_coordinate == 10 and n_coordinate not in g_coordinates:
+            hard_stop()
+            moveR(80,80)
+            sleep(0.6)
+            stop(0.4)
+            drop_object()
+            moveB(25,25)
+            sleep(0.3)
+            stop(0.3)
+            turnR(90,90)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+
+        elif n_coordinate == 12 and n_coordinate not in g_coordinates:
+            hard_stop()
+            turnR(90,90)
+            stop(0.5)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+
+        elif n_coordinate == 16 and n_coordinate not in g_coordinates:
+            hard_stop()
+            turnR(90,90)
+            stop(0.4)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+        elif n_coordinate == 18 and n_coordinate not in g_coordinates:
+            hard_stop()
+            turnR(90,90)
+            stop(0.4)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+        elif n_coordinate == 19 and n_coordinate not in g_coordinates:
+            hard_stop()
+            turnR(90,90)
+            stop(0.4)
+            g_coordinates.add(n_coordinate)
+            break
+        
+        follow_line(ir)
+
+def red8():
+    n_coordinate = 0
+    at_intersection = False
+    g_coordinates = set()
+    
+    while True:
+        ir = read_sensor_values()
+
+        if (ir[1] ==0  and ir[2] == 0 and ir[3] == 0) or (ir[0] == 0 and ir[1] == 0 and ir[2] == 0) or (ir[2] == 0 and ir[3] == 0 and ir[4] == 0):
+                if not at_intersection:
+                    
+                    n_coordinate += 1
+                    at_intersection = True
+                    
+                    print("n_coordinate: ", n_coordinate)
+                    print("g_coordinate: ", g_coordinates)
+                    
+                    
+                    # stop(0.5)
+        
+
+        else:
+            at_intersection = False
+        if n_coordinate  ==  2 and n_coordinate not in g_coordinates:
+            stop(0.3)
+            turnL(90,90)
+            stop(0.3)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+
+        elif n_coordinate  ==  5 and n_coordinate not in g_coordinates:
+            hard_stop()
+            turnL(90,90)
+            stop(0.4)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+
+
+        elif n_coordinate == 7 and n_coordinate not in g_coordinates:
+            hard_stop()
+            moveR(80,80)
+            sleep(0.6)
+            stop(0.4)
+            drop_object()
+            moveB(25,25)
+            sleep(0.3)
+            stop(0.3)
+            turnR(90,90)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+
+        elif n_coordinate == 9 and n_coordinate not in g_coordinates:
+            hard_stop()
+            turnR(90,90)
+            stop(0.5)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+
+        elif n_coordinate == 12 and n_coordinate not in g_coordinates:
+            hard_stop()
+            turnR(90,90)
+            stop(0.4)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+        
+        elif n_coordinate == 13 and n_coordinate not in g_coordinates:
+            hard_stop()
+            turnR(90,90)
+            stop(0.4)
+            g_coordinates.add(n_coordinate)
+            break
+        
+        follow_line(ir)
+
+def red9():
+    n_coordinate = 0
+    at_intersection = False
+    g_coordinates = set()
+    
+    while True:
+        ir = read_sensor_values()
+
+        if (ir[1] ==0  and ir[2] == 0 and ir[3] == 0) or (ir[0] == 0 and ir[1] == 0 and ir[2] == 0) or (ir[2] == 0 and ir[3] == 0 and ir[4] == 0):
+                if not at_intersection:
+                    
+                    n_coordinate += 1
+                    at_intersection = True
+                    
+                    print("n_coordinate: ", n_coordinate)
+                    print("g_coordinate: ", g_coordinates)
+                    
+                    
+                    # stop(0.5)
+        
+
+        else:
+            at_intersection = False
+        if n_coordinate  ==  1 and n_coordinate not in g_coordinates:
+            stop(0.3)
+            turnR(90,90)
+            stop(0.3)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+
+        elif n_coordinate  ==  2 and n_coordinate not in g_coordinates:
+            hard_stop()
+            turnL(90,90)
+            stop(0.4)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+        elif n_coordinate  ==  4 and n_coordinate not in g_coordinates:
+            hard_stop()
+            turnL(90,90)
+            stop(0.4)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+
+
+        elif n_coordinate == 6 and n_coordinate not in g_coordinates:
+            hard_stop()
+            moveR(80,80)
+            sleep(0.6)
+            stop(0.4)
+            drop_object()
+            moveB(25,25)
+            sleep(0.3)
+            stop(0.3)
+            turnR(90,90)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+
+        elif n_coordinate == 8 and n_coordinate not in g_coordinates:
+            hard_stop()
+            turnR(90,90)
+            stop(0.5)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+
+        elif n_coordinate == 10 and n_coordinate not in g_coordinates:
+            hard_stop()
+            turnR(90,90)
+            stop(0.4)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+        
+        elif n_coordinate == 11 and n_coordinate not in g_coordinates:
+            stop(0.4)
+            g_coordinates.add(n_coordinate)
+            break
+        
+        follow_line(ir)
+
+def red10():
+    n_coordinate = 0
+    at_intersection = False
+    g_coordinates = set()
+    turnR(90,90)
+    stop(0.4)
+    while True:
+        ir = read_sensor_values()
+
+        if (ir[1] ==0  and ir[2] == 0 and ir[3] == 0) or (ir[0] == 0 and ir[1] == 0 and ir[2] == 0) or (ir[2] == 0 and ir[3] == 0 and ir[4] == 0):
+                if not at_intersection:
+                    
+                    n_coordinate += 1
+                    at_intersection = True
+                    
+                    print("n_coordinate: ", n_coordinate)
+                    print("g_coordinate: ", g_coordinates)
+                    
+                    
+                    # stop(0.5)
+        
+
+        else:
+            at_intersection = False
+        if n_coordinate  ==  2 and n_coordinate not in g_coordinates:
+            stop(0.3)
+            turnL(90,90)
+            stop(0.3)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+
+        elif n_coordinate  ==  4 and n_coordinate not in g_coordinates:
+            hard_stop()
+            turnL(90,90)
+            stop(0.4)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+
+
+        elif n_coordinate == 6 and n_coordinate not in g_coordinates:
+            hard_stop()
+            moveR(80,80)
+            sleep(0.6)
+            stop(0.4)
+            drop_object()
+            moveB(25,25)
+            sleep(0.3)
+            stop(0.3)
+            turnR(90,90)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+
+        elif n_coordinate == 8 and n_coordinate not in g_coordinates:
+            hard_stop()
+            turnR(90,90)
+            stop(0.5)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+
+        elif n_coordinate == 10 and n_coordinate not in g_coordinates:
+            hard_stop()
+            turnR(90,90)
+            stop(0.4)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+        
+        elif n_coordinate == 11 and n_coordinate not in g_coordinates:
+            stop(0.4)
+            g_coordinates.add(n_coordinate)
+            break
+        
+        follow_line(ir)
+
+def red11():
+    n_coordinate = 0
+    at_intersection = False
+    g_coordinates = set()
+    turnR(90,90)
+    stop(0.4)
+    while True:
+        ir = read_sensor_values()
+
+        if (ir[1] ==0  and ir[2] == 0 and ir[3] == 0) or (ir[0] == 0 and ir[1] == 0 and ir[2] == 0) or (ir[2] == 0 and ir[3] == 0 and ir[4] == 0):
+                if not at_intersection:
+                    
+                    n_coordinate += 1
+                    at_intersection = True
+                    
+                    print("n_coordinate: ", n_coordinate)
+                    print("g_coordinate: ", g_coordinates)
+                    
+                    
+                    # stop(0.5)
+        
+
+        else:
+            at_intersection = False
+        if n_coordinate  ==  3 and n_coordinate not in g_coordinates:
+            stop(0.3)
+            turnL(90,90)
+            stop(0.3)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+
+        elif n_coordinate  ==  5 and n_coordinate not in g_coordinates:
+            hard_stop()
+            turnL(90,90)
+            stop(0.4)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+
+
+        elif n_coordinate == 7 and n_coordinate not in g_coordinates:
+            hard_stop()
+            moveR(80,80)
+            sleep(0.6)
+            stop(0.4)
+            drop_object()
+            moveB(25,25)
+            sleep(0.3)
+            stop(0.3)
+            turnR(90,90)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+
+        elif n_coordinate == 9 and n_coordinate not in g_coordinates:
+            hard_stop()
+            turnR(90,90)
+            stop(0.5)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+
+        elif n_coordinate == 11 and n_coordinate not in g_coordinates:
+            hard_stop()
+            turnR(90,90)
+            stop(0.4)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+        
+        elif n_coordinate == 13 and n_coordinate not in g_coordinates:
+            stop(0.4)
+            g_coordinates.add(n_coordinate)
+            break
+        
+        follow_line(ir)
+
+def red12():
+    n_coordinate = 0
+    at_intersection = False
+    g_coordinates = set()
+    while True:
+        ir = read_sensor_values()
+
+        if (ir[1] ==0  and ir[2] == 0 and ir[3] == 0) or (ir[0] == 0 and ir[1] == 0 and ir[2] == 0) or (ir[2] == 0 and ir[3] == 0 and ir[4] == 0):
+                if not at_intersection:
+                    
+                    n_coordinate += 1
+                    at_intersection = True
+                    
+                    print("n_coordinate: ", n_coordinate)
+                    print("g_coordinate: ", g_coordinates)
+                    
+                    
+                    # stop(0.5)
+        
+
+        else:
+            at_intersection = False
+        if n_coordinate  ==  2 and n_coordinate not in g_coordinates:
+            stop(0.3)
+            turnR(90,90)
+            stop(0.3)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+
+        elif n_coordinate  ==  4 and n_coordinate not in g_coordinates:
+            hard_stop()
+            turnR(90,90)
+            stop(0.4)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+
+        elif n_coordinate == 7 and n_coordinate not in g_coordinates:
+            hard_stop()
+            moveL(80,80)
+            sleep(0.6)
+            stop(0.4)
+            drop_object()
+            moveB(25,25)
+            sleep(0.3)
+            stop(0.3)
+            turnL(90,90)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+
+        elif n_coordinate == 10 and n_coordinate not in g_coordinates:
+            hard_stop()
+            turnL(90,90)
+            stop(0.5)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+
+        elif n_coordinate == 12 and n_coordinate not in g_coordinates:
+            hard_stop()
+            turnL(90,90)
+            stop(0.4)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+        elif n_coordinate == 13 and n_coordinate not in g_coordinates:
+            hard_stop()
+            turnL(90,90)
+            stop(0.4)
+            g_coordinates.add(n_coordinate)
+            break
+            
+
+
+        follow_line(ir)
+
+def red13():
+    n_coordinate = 0
+    at_intersection = False
+    g_coordinates = set()
+    while True:
+        ir = read_sensor_values()
+
+        if (ir[1] ==0  and ir[2] == 0 and ir[3] == 0) or (ir[0] == 0 and ir[1] == 0 and ir[2] == 0) or (ir[2] == 0 and ir[3] == 0 and ir[4] == 0):
+                if not at_intersection:
+                    
+                    n_coordinate += 1
+                    at_intersection = True
+                    
+                    print("n_coordinate: ", n_coordinate)
+                    print("g_coordinate: ", g_coordinates)
+                    
+                    
+                    # stop(0.5)
+        
+
+        else:
+            at_intersection = False
+        if n_coordinate  ==  2 and n_coordinate not in g_coordinates:
+            stop(0.3)
+            turnR(90,90)
+            stop(0.3)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+
+        
+
+        elif n_coordinate == 4 and n_coordinate not in g_coordinates:
+            hard_stop()
+            moveL(80,80)
+            sleep(0.6)
+            stop(0.4)
+            drop_object()
+            moveB(25,25)
+            sleep(0.3)
+            stop(0.3)
+            turnL(90,90)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+
+        elif n_coordinate == 6 and n_coordinate not in g_coordinates:
+            hard_stop()
+            turnL(90,90)
+            stop(0.5)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+
+        
+        elif n_coordinate == 7 and n_coordinate not in g_coordinates:
+            hard_stop()
+            turnL(90,90)
+            stop(0.4)
+            g_coordinates.add(n_coordinate)
+            break
+        follow_line(ir)
+
+def red14():
+    n_coordinate = 0
+    at_intersection = False
+    g_coordinates = set()
+    while True:
+        ir = read_sensor_values()
+
+        if (ir[1] ==0  and ir[2] == 0 and ir[3] == 0) or (ir[0] == 0 and ir[1] == 0 and ir[2] == 0) or (ir[2] == 0 and ir[3] == 0 and ir[4] == 0):
+                if not at_intersection:
+                    
+                    n_coordinate += 1
+                    at_intersection = True
+                    
+                    print("n_coordinate: ", n_coordinate)
+                    print("g_coordinate: ", g_coordinates)
+                    
+                    
+                    # stop(0.5)
+        
+
+        else:
+            at_intersection = False
+        if n_coordinate  ==  1 and n_coordinate not in g_coordinates:
+            stop(0.3)
+            turnL(90,90)
+            stop(0.3)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+
+        if n_coordinate  ==  2 and n_coordinate not in g_coordinates:
+            stop(0.3)
+            turnR(90,90)
+            stop(0.3)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+
+        elif n_coordinate == 3 and n_coordinate not in g_coordinates:
+            hard_stop()
+            moveL(80,80)
+            sleep(0.6)
+            stop(0.4)
+            drop_object()
+            moveB(25,25)
+            sleep(0.3)
+            stop(0.3)
+            turnL(90,90)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+
+        elif n_coordinate == 4 and n_coordinate not in g_coordinates:
+            hard_stop()
+            turnL(90,90)
+            stop(0.5)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+
+        
+        elif n_coordinate == 5 and n_coordinate not in g_coordinates:
+            hard_stop()
+            turnL(90,90)
+            stop(0.4)
+            g_coordinates.add(n_coordinate)
+            break
+
+def red15():
+    n_coordinate = 0
+    at_intersection = False
+    g_coordinates = set()
+    while True:
+        ir = read_sensor_values()
+
+        if (ir[1] ==0  and ir[2] == 0 and ir[3] == 0) or (ir[0] == 0 and ir[1] == 0 and ir[2] == 0) or (ir[2] == 0 and ir[3] == 0 and ir[4] == 0):
+                if not at_intersection:
+                    
+                    n_coordinate += 1
+                    at_intersection = True
+                    
+                    print("n_coordinate: ", n_coordinate)
+                    print("g_coordinate: ", g_coordinates)
+                    
+                    
+                    # stop(0.5)
+        
+
+        else:
+            at_intersection = False
+        if n_coordinate  ==  1 and n_coordinate not in g_coordinates:
+            stop(0.3)
+            turnL(90,90)
+            stop(0.3)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+
+        
+
+        elif n_coordinate == 2 and n_coordinate not in g_coordinates:
+            hard_stop()
+            moveF(30,30)
+            sleep(0.3)
+            stop(0.2)
+            drop_object()
+            moveB(30,30)
+            sleep(0.6)
+            turnR(90,90)
+            stop(0.3)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+
+        
+
+        
+        elif n_coordinate == 3 and n_coordinate not in g_coordinates:
+            hard_stop()
+            turnL(90,90)
+            stop(0.4)
+            g_coordinates.add(n_coordinate)
+            break
+
+def red1():
+    n_coordinate = 0
+    at_intersection = False
+    g_coordinates = set()
+    
+    while True:
+        ir = read_sensor_values()
+
+        if (ir[1] ==0  and ir[2] == 0 and ir[3] == 0) or (ir[0] == 0 and ir[1] == 0 and ir[2] == 0) or (ir[2] == 0 and ir[3] == 0 and ir[4] == 0):
+                if not at_intersection:
+                    
+                    n_coordinate += 1
+                    at_intersection = True
+                    
+                    print("n_coordinate: ", n_coordinate)
+                    print("g_coordinate: ", g_coordinates)
+                    
+                    
+                    # stop(0.5)
+        
+
+        else:
+            at_intersection = False
+        if n_coordinate  ==  1 and n_coordinate not in g_coordinates:
+            hard_stop()
+            turnL(90,90)
+            stop(0.5)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+
+        elif n_coordinate  ==  2 and n_coordinate not in g_coordinates:
+            hard_stop()
+            turnL(90,90)
+            stop(0.5)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+
+        elif n_coordinate == 3 and n_coordinate not in g_coordinates:
+            hard_stop()
+            moveR(90,90)
+            sleep(0.8)
+            stop(0.5)
+            drop_object()
+            
+            stop(0.3)
+            turnR(90,90)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+
+        elif n_coordinate == 5 and n_coordinate not in g_coordinates:
+            hard_stop()
+            turnR(90,90)
+            stop(0.5)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+
+        elif n_coordinate == 10 and n_coordinate not in g_coordinates:
+            stop(100)
+            
+            g_coordinates.add(n_coordinate)
+            
+            break
+
+
+        follow_line(ir)
+
 def traverse_map():
     coordinate = 0
     at_intersection = False
@@ -1466,7 +2542,7 @@ def traverse_map():
             print("Object color is: ", detect_color())
             break
         
-        if dist < 10.5:
+        if dist < 10.8:
                 hard_stop()
                 detect_color()
                 sleep(2)
@@ -1479,13 +2555,75 @@ def traverse_map():
                     if coordinate == 1 and coordinate not in finished_drop:
                         finished_drop.add(coordinate)
                         red1()
+                    elif coordinate == 2 and coordinate not in finished_drop:
+                        finished_drop.add(coordinate)
+                        red2()
+                    elif coordinate == 3 and coordinate not in finished_drop:
+                        finished_drop.add(coordinate)
+                        red3()
+                    elif coordinate == 4 and coordinate not in finished_drop:
+                        coordinate += 1
+                        finished_drop.add(coordinate)
+                        red4()
+                    elif coordinate == 5 and coordinate not in finished_drop:
+                        coordinate += 1
+                        finished_drop.add(coordinate)
+                        red5()
+                    elif coordinate == 6 and coordinate not in finished_drop:
+                        
+                        finished_drop.add(coordinate)
+                        red6()
+                    elif coordinate == 7 and coordinate not in finished_drop:
+                        coordinate += 1
+                        finished_drop.add(coordinate)
+                        red7()
+                    elif coordinate == 8 and coordinate not in finished_drop:
+                        coordinate += 1
+                        finished_drop.add(coordinate)
+                        red8()
+                    elif coordinate == 9 and coordinate not in finished_drop:
+                        coordinate += 1
+                        finished_drop.add(coordinate)
+                        red9()
+                    elif coordinate == 10 and coordinate not in finished_drop:
+                        
+                        finished_drop.add(coordinate)
+                        red10()
+                    elif coordinate == 10 and coordinate not in finished_drop:
+                        
+                        finished_drop.add(coordinate)
+                        red10()
+                    elif coordinate == 12 and coordinate not in finished_drop:
+                        coordinate += 1
+                        finished_drop.add(coordinate)
+                        red12()
+                    elif coordinate == 13 and coordinate not in finished_drop:
+                        coordinate += 1
+                        finished_drop.add(coordinate)
+                        red13()
+                    elif coordinate == 13 and coordinate not in finished_drop:
+                        coordinate += 1
+                        finished_drop.add(coordinate)
+                        red13()
+                    elif coordinate == 14 and coordinate not in finished_drop:
+                        coordinate += 1
+                        finished_drop.add(coordinate)
+                        red14()
+                    elif coordinate == 15 and coordinate not in finished_drop:
+                        coordinate += 1
+                        finished_drop.add(coordinate)
+                        red15()
+                    elif coordinate == 16 and coordinate not in finished_drop:
+                        
+                        finished_drop.add(coordinate)
+                        red16()
+                    
                     
                 else: 
                     if coordinate == 1 and coordinate not in finished_drop:
                         coordinate += 1
                         finished_drop.add(coordinate)
                         blue1()
-
                     elif coordinate == 2 and coordinate not in finished_drop:
                         finished_drop.add(coordinate)
                         blue2()
