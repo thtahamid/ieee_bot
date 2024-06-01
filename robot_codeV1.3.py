@@ -135,7 +135,7 @@ def stop(t=10):
     sleep(t)
 
 def hard_stop():
-    moveB(17, 17)
+    moveB(20, 20)
     sleep(0.11)
     stop(0.5)
 
@@ -168,21 +168,21 @@ def measure_distance():
 
 def follow_line(ir):
     if ir[2] == 0:
-        moveF(30, 30)
+        moveF(26, 26)
     elif ir[1] == 0:
-        moveL(60,20)
+        moveL(80,40)
         # moveF(55, 10)
     elif ir[3] == 0:
-        moveR(20,60)
+        moveR(40,80)
         # moveF(10, 55)
     elif ir[1] and ir[2] == 0:
         moveF(50, 5)
     elif ir[2] and ir[3] == 0:
         moveF(5, 50)
     elif ir[0] == 0:
-        moveL(80,80)
+        moveL(95,95)
     elif ir[4] == 0:
-        moveR(80,80)
+        moveR(95,95)
 
     # elif ir[0] == 1 and ir [2] ==1 and ir[2] == 1 and ir [3] == 1 and ir[4] == 1 :
     #     moveL(30,70) # or moveR(70,30)
@@ -291,7 +291,7 @@ def blue1():
             follow_line(ir)
 
         elif n_coordinate  ==  2 and n_coordinate not in g_coordinates:
-            hard_stop()
+            stop(0.3)
             turnR(90,90)
             stop(0.5)
             g_coordinates.add(n_coordinate)
@@ -300,7 +300,7 @@ def blue1():
         elif n_coordinate == 3 and n_coordinate not in g_coordinates:  
             hard_stop()
             moveL(80,80)
-            sleep(0.5)
+            sleep(0.8)
             stop(0.2)
             drop_object()
             moveB(30,30)
@@ -310,13 +310,13 @@ def blue1():
             g_coordinates.add(n_coordinate)
             follow_line(ir)
         elif n_coordinate == 4 and n_coordinate not in g_coordinates:
-            hard_stop()
+            stop(0.3)
             turnL(90,100)
             stop(0.5)
             g_coordinates.add(n_coordinate)
             follow_line(ir)
         elif n_coordinate == 5 and n_coordinate not in g_coordinates:
-            hard_stop()
+            
             stop(0.3)
             print("Stopped for a sec")
             print("Turnning left")
@@ -390,8 +390,7 @@ def blue3():
     n_coordinate = 0
     at_intersection = False
     g_coordinates = set()
-    turnL(90,90)
-    stop(0.3)
+    
     while True:
         ir = read_sensor_values()
 
@@ -407,39 +406,56 @@ def blue3():
         else:
             at_intersection = False
         if n_coordinate  ==  1 and n_coordinate not in g_coordinates:
+            moveF(25,25)
+            sleep(0.2)
+            stop(0.3)
+            # hard_stop()
+            turnL(90,90)
+            # moveL(90,90)
+            # sleep(0.8)
+            stop(0.5)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+        elif n_coordinate  ==  2 and n_coordinate not in g_coordinates:
             
             stop(0.3)
             # hard_stop()
-            turnR(90,90)
+            turnL(90,90)
             # moveL(90,90)
             # sleep(0.8)
             stop(0.5)
             g_coordinates.add(n_coordinate)
             follow_line(ir)
 
-        elif n_coordinate == 2 and n_coordinate not in g_coordinates:  
+        elif n_coordinate == 3 and n_coordinate not in g_coordinates:  
             hard_stop()
-            moveF(30,30)
-            sleep(0.6)
-            stop(0.5)
+            moveR(80,80)
+            sleep(0.8)
+            stop(0.3)
             drop_object()
             moveB(30,30)
-            sleep(1)
-            turnL(100,100)
+            sleep(0.3)
+            turnR(100,100)
             stop(0.5)
             g_coordinates.add(n_coordinate)
             follow_line(ir)
     
-        elif n_coordinate == 3 and n_coordinate not in g_coordinates:
-            stop(1)
-            print("Stopped for a sec")
-            print("Turnning left")
+        elif n_coordinate == 4 and n_coordinate not in g_coordinates:
+            stop(0.5)
+            
+            turnR(90,90)
+            print("Turned left, back to normal traversal")
+            stop(0.5)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+        elif n_coordinate == 5 and n_coordinate not in g_coordinates:
+            stop(0.5)
+            
             turnL(90,90)
             print("Turned left, back to normal traversal")
             stop(0.5)
             g_coordinates.add(n_coordinate)
             break
-
 
         follow_line(ir)
 
@@ -463,9 +479,8 @@ def blue4():
         else:
             at_intersection = False
         if n_coordinate  ==  1 and n_coordinate not in g_coordinates:
-            
             moveF(25,25)
-            sleep(0.22)
+            sleep(0.25)
             stop(0.3)
             # hard_stop()
             turnL(90,90)
@@ -476,15 +491,15 @@ def blue4():
             follow_line(ir)
 
         elif n_coordinate == 2 and n_coordinate not in g_coordinates:  
-            hard_stop()
+            stop(0.25)
             turnL(90,90)
             stop(0.5)
             g_coordinates.add(n_coordinate)
             follow_line(ir)
         elif n_coordinate == 4 and n_coordinate not in g_coordinates:  
             hard_stop()
-            moveR(80,80)
-            sleep(0.7)
+            moveR(90,90)
+            sleep(0.8)
             stop(0.3)
             drop_object()
             moveB(30,30)
@@ -493,17 +508,16 @@ def blue4():
             stop(0.3)
             g_coordinates.add(n_coordinate)
             follow_line(ir)
-        elif n_coordinate == 5 and n_coordinate not in g_coordinates:  
+        elif n_coordinate == 6 and n_coordinate not in g_coordinates:  
             hard_stop()
             turnR(90,90)
             stop(0.5)
             g_coordinates.add(n_coordinate)
             follow_line(ir)
 
-        elif n_coordinate == 6 and n_coordinate not in g_coordinates:
-            stop(0.5)
-            print("Stopped for a sec")
-            print("Turnning left")
+        elif n_coordinate == 7 and n_coordinate not in g_coordinates:
+            stop(0.25)
+        
             turnL(90,90)
             print("Turned left, back to normal traversal")
             stop(0.5)
@@ -549,8 +563,8 @@ def blue5():
         
         elif n_coordinate == 4 and n_coordinate not in g_coordinates:  
             hard_stop()
-            moveR(80,80)
-            sleep(0.7)
+            moveR(90,90)
+            sleep(0.8)
             stop(0.3)
             drop_object()
             moveB(30,30)
@@ -562,16 +576,13 @@ def blue5():
         elif n_coordinate == 6 and n_coordinate not in g_coordinates:  
             hard_stop()
             turnR(90,90)
-            stop(0.5)
+            stop(0.3)
             g_coordinates.add(n_coordinate)
             follow_line(ir)
 
         elif n_coordinate == 7 and n_coordinate not in g_coordinates:
-            stop(0.5)
-            print("Stopped for a sec")
-            print("Turnning left")
-            # turnL(90,90)
-            print("Turned left, back to normal traversal")
+            stop(0.2)
+            
             # stop(0.5)
             g_coordinates.add(n_coordinate)
             break
@@ -601,7 +612,7 @@ def blue6():
         if n_coordinate  ==  1 and n_coordinate not in g_coordinates:
             moveF(25,25)
             sleep(0.3)
-            stop(0.3)
+            stop(0.2)
             turnR(90,90)
             # moveL(90,90)
             # sleep(0.8)
@@ -739,20 +750,20 @@ def blue8():
 
         elif n_coordinate  ==  3 and n_coordinate not in g_coordinates:
             hard_stop()
-            turnR(90,90)
+            turnL(90,90)
             stop(0.5)
             g_coordinates.add(n_coordinate)
             follow_line(ir)
 
         elif n_coordinate == 4 and n_coordinate not in g_coordinates:  
             hard_stop()
-            moveL(80,80)
+            moveR(80,80)
             sleep(0.5)
             stop(0.2)
             drop_object()
             moveB(30,30)
             sleep(0.4)
-            turnL(90,90)
+            turnR(90,90)
             stop(0.5)
             g_coordinates.add(n_coordinate)
             follow_line(ir)
@@ -972,9 +983,9 @@ def blue12():
 
         else:
             at_intersection = False
-        if n_coordinate  ==  2 and n_coordinate not in g_coordinates:
+        if n_coordinate  ==  1 and n_coordinate not in g_coordinates:
             moveF(25,25)
-            sleep(0.22)
+            sleep(0.18)
             stop(0.3)
             # hard_stop()
             turnL(90,90)
@@ -983,16 +994,25 @@ def blue12():
             stop(0.5)
             g_coordinates.add(n_coordinate)
             follow_line(ir)
-
-        elif n_coordinate == 5 and n_coordinate not in g_coordinates:  
-            hard_stop()
-            moveF(30,30)
-            sleep(0.6)
+        elif n_coordinate  ==  4 and n_coordinate not in g_coordinates:
+            
+            stop(0.3)
+            # hard_stop()
+            turnL(90,90)
+            # moveL(90,90)
+            # sleep(0.8)
             stop(0.5)
+            g_coordinates.add(n_coordinate)
+            follow_line(ir)
+        elif n_coordinate == 6 and n_coordinate not in g_coordinates:  
+            hard_stop()
+            moveR(80,80)
+            sleep(0.8)
+            stop(0.3)
             drop_object()
-            moveB(30,30)
-            sleep(1)
-            turnL(100,100)
+            # moveB(30,30)
+            # sleep(1)
+            turnR(100,100)
             stop(0.5)
             g_coordinates.add(n_coordinate)
             follow_line(ir)
@@ -1001,14 +1021,16 @@ def blue12():
             stop(0.5)
             
             print("Turnning left")
-            turnL(90,90)
+            turnR(90,90)
             
             stop(0.5)
             g_coordinates.add(n_coordinate)
-        elif n_coordinate == 9 and n_coordinate not in g_coordinates:
+            follow_line(ir)
+        elif n_coordinate == 11 and n_coordinate not in g_coordinates:
             stop(0.5)
-            print("Stopped for a sec")
-            g_coordinates.add(n_coordinate)    
+            
+            g_coordinates.add(n_coordinate)  
+            break  
         
 
 
@@ -1298,21 +1320,21 @@ def red1():
         else:
             at_intersection = False
         if n_coordinate  ==  1 and n_coordinate not in g_coordinates:
-            hard_stop()
+            stop(0.2)
             turnL(90,90)
-            stop(0.5)
+            stop(0.3)
             g_coordinates.add(n_coordinate)
             follow_line(ir)
 
         elif n_coordinate  ==  5 and n_coordinate not in g_coordinates:
-            hard_stop()
+            stop(0.2)
             turnL(90,90)
             stop(0.5)
             g_coordinates.add(n_coordinate)
             follow_line(ir)
 
         elif n_coordinate == 7 and n_coordinate not in g_coordinates:
-            hard_stop()
+            stop(0.2)
             moveR(90,90)
             sleep(0.8)
             stop(0.5)
@@ -1324,14 +1346,14 @@ def red1():
             follow_line(ir)
 
         elif n_coordinate == 9 and n_coordinate not in g_coordinates:
-            hard_stop()
+            stop(0.2)
             turnR(90,90)
             stop(0.5)
             g_coordinates.add(n_coordinate)
             follow_line(ir)
 
         elif n_coordinate == 13 and n_coordinate not in g_coordinates:
-            hard_stop()
+            stop(0.2)
             turnR(90,90)
             stop(0.5)
             g_coordinates.add(n_coordinate)
@@ -2352,7 +2374,7 @@ def red15():
             g_coordinates.add(n_coordinate)
             break
 
-def red1():
+def red16():
     n_coordinate = 0
     at_intersection = False
     g_coordinates = set()
@@ -2452,7 +2474,7 @@ def traverse_map():
         
         # AT coordinate 1 turn left to traverse
         if coordinate == 1 and coordinate not in completed_coordinates:
-            hard_stop()
+            stop(0.2)
             print("Robot reached coordinate: ", coordinate)
             turnL(100, 100)
             print("Turned left")
@@ -2467,7 +2489,7 @@ def traverse_map():
         
         # At coordinate 5 turn right finish first column 
         elif coordinate == 5 and coordinate not in completed_coordinates:
-            hard_stop()
+            stop(0.3)
             print("Robot reached coordinate: ", coordinate)
             turnR(100, 100)
             print("Turned Right")
@@ -2542,10 +2564,10 @@ def traverse_map():
             print("Object color is: ", detect_color())
             break
         
-        if dist < 10.8:
+        if dist < 10.5:
                 hard_stop()
                 detect_color()
-                sleep(2)
+                sleep(1.5)
                 obj_color = detect_color()
                 print("Object color: ", obj_color)
                 stop(0.5)
@@ -2628,7 +2650,9 @@ def traverse_map():
                         finished_drop.add(coordinate)
                         blue2()
                     elif coordinate == 3 and coordinate not in finished_drop:
+                        coordinate +=1
                         finished_drop.add(coordinate)
+
                         blue3()
                     elif coordinate == 4 and coordinate not in finished_drop:
                         finished_drop.add(coordinate)
@@ -2661,7 +2685,7 @@ def traverse_map():
                         finished_drop.add(coordinate)
                         blue11()
                     elif coordinate == 12 and coordinate not in finished_drop:
-                        
+                        coordinate += 1
                         finished_drop.add(coordinate)
                         blue12()
                     elif coordinate == 13 and coordinate not in finished_drop:

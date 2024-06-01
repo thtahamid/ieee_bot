@@ -101,12 +101,14 @@ def main():
         rm = motor(21,16,20, 1,7,8)
         print("Reading IR sensor values...")
         
-        rm.moveL(80,80)
-        sleep(1)
+        # rm.moveL(80,80)
+        # sleep(1)
         # rm.moveB(30,30)
         # sleep(0.2)
-
         while True:
+
+            
+            
             # ir = read_sensor_values()
             # print_sensor_values(ir)
             # time.sleep(0.05)  # Adjust delay as needed
