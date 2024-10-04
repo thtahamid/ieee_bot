@@ -1,4 +1,4 @@
-from adafruit_servokit import ServoKit
+
 import RPi.GPIO as GPIO
 from time import sleep
 import time
@@ -8,8 +8,7 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
 
-arm=ServoKit (channels=16)
-servo=3
+
 
 
 # GPIO pins for IR sensors
@@ -85,36 +84,36 @@ class motor():
         GPIO.output(self.la,GPIO.LOW)
         GPIO.output(self.lb,GPIO.HIGH)
         
-    def stop(self):
+    def stop(self,t):
         self.pwmr.ChangeDutyCycle(0)
         self.pwml.ChangeDutyCycle(0)
-        # sleep(t)
+        sleep(t)
  
-
-
-
-
 
 def main():
     try:
         setup()
-        rm = motor(21,16,20, 1,7,8)
+        rm = motor(21,16,20, 8,1,7)
         # print("Reading IR sensor values...")
         
-        # rm.moveL(80,80)
-        # sleep(1)
-        # rm.moveB(30,30)
-        # sleep(0.2)
+        
         while True:
-
-            
-            
             # ir = read_sensor_values()
             # print_sensor_values(ir)
+            # sleep(0.1)
+            print("Moving Forward")
+            rm.moveF(100,100)
+            sleep(1)
+            rm.stop(1)
+            print("Moving Backward")
+            rm.moveB(100,100)
+            sleep(1)
+            rm.stop(1)
+
             # time.sleep(0.05)  # Adjust delay as needed
-            rm.moveL(80,80)
+            # rm.moveL(80,80)
             # sleep(3)
-            # rm.stop()
+            # 
             # sleep(1)
             # rm.moveR(100,100)
             # sleep(3)

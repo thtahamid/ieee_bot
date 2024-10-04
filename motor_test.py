@@ -64,13 +64,19 @@ class motor():
         self.pwma.ChangeDutyCycle(0)
         self.pwmb.ChangeDutyCycle(0)
         sleep(t)
- 
-rmotor = motor(21,16,20, 1,7,8)
+
+# Ena,In1,In2,Enb,In3,In4
+rmotor = motor(21,16,20, 1,8,7)
 
 
-rmotor.moveF(100, 2)
+rmotor.moveF(50, 1)
 rmotor.stop(1)
-
+rmotor.moveB(50, 1)
+rmotor.stop(1)
+rmotor.moveL(50, 1)
+rmotor.stop(1)
+rmotor.moveR(50, 1)
+rmotor.stop(1)
 
 
 
