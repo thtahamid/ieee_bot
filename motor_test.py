@@ -69,14 +69,16 @@ class motor():
 rmotor = motor(21,16,20, 1,8,7)
 
 
-rmotor.moveF(50, 1)
-rmotor.stop(1)
-rmotor.moveB(50, 1)
-rmotor.stop(1)
-rmotor.moveL(50, 1)
-rmotor.stop(1)
-rmotor.moveR(50, 1)
-rmotor.stop(1)
+# rmotor.moveF(50, 1)
+# rmotor.moveB(50, 0.2)
+# rmotor.stop(2)
+# rmotor.moveB(50, 1)
+# rmotor.moveF(50, 0.2)
+rmotor.stop(2)
+rmotor.moveL(50, 5)
+rmotor.stop(2)
+# rmotor.moveR(50, 1)
+# rmotor.stop(2)
 
 # sfzdfzd
 
